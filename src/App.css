@@ -1,0 +1,69 @@
+body {
+  background-color: #f0f0f0;
+}
+
+#root {
+  margin: 10px;
+  display: flex;
+  color: #595959;
+}
+
+a[href] {
+  color: #5294e2;
+}
+
+.active {
+  background: #2F9599;
+  color: #f0f0f0;
+}
+
+span {
+  display: block;
+}
+
+.task-details {
+  width: 300px;
+  min-height: 200px;
+}
+
+span-title {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #f0f0f0;
+  padding: 10px;
+  text-align: center;
+}
+
+div-place {
+  border-radius: 10px;
+  display: block;
+  background: #ffffff;
+  border-collapse: collapse;
+  border-color: #f0f0f0;
+  border-style: solid;
+  padding: 5px;
+}
+
+span.not-important {
+  color: #a9a9a9;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.button {
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.suggested-action {
+  background: #6db442;
+  color: #f0f0f0;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
