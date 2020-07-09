@@ -10,7 +10,7 @@ export interface SwitcherOptionProps extends SwitcherOptionData {
 
 export interface SwitcherStore {
   optionsData: SwitcherOptionData[];
-  activeOption: SwitcherOptionData | undefined;
+  activeOption: SwitcherOptionData | null;
 }
 
 interface SwitcherPropsData {

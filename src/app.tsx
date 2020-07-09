@@ -60,17 +60,44 @@ class TaskListElement extends React.Component<TaskListElementProps> {
 class TaskStore implements SwitcherStore {
   @observable optionsData: Task[] = [new Task("name", "desc"), new Task("another", "another desc")];
 
-  @observable activeOption = undefined;
+  @observable activeOption = null;
 }
 
+@observer
+class TaskDetails extends React.Component<{selected: Task | null}> {
+  render() {
+    const task = this.props.selected;
+
+    if(!task) return (
+      <div>
+        <span className="title">Select a task</span>
+        <div className="place task-details"/>
+      </div>
+    )
+
+    return (
+      <div>
+        <span className="title"></span>
+        <div className="place task-details">
+
+        </div>
+      </div>
+    );
+  }
+}
+
+@observer
 class App extends React.Component {
-  @observable tasks = new TaskStore();
+  tasks = new TaskStore();
 
   render() {
     return (
-      <div className="place">
-        <Switcher Component={TaskListElement} store={this.tasks}/>
-      </div>
+      <>
+        <TaskDetails selected={this.tasks.activeOption}/>
+        <div className="place">
+          <Switcher Component={TaskListElement} store={this.tasks}/>
+        </div>
+      </>
     )
   }
 }
