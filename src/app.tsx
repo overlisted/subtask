@@ -1,6 +1,6 @@
 import React from 'react';
 import './app.css';
-import {Switcher, SwitcherOptionData, SwitcherOptionProps, SwitcherStore} from './UILib'
+import {Switcher, SwitcherOptionData, SwitcherOptionProps, SwitcherStore} from './UILib/switcher'
 import {observer} from "mobx-react"
 import {observable} from "mobx";
 import classNames from "classnames";
