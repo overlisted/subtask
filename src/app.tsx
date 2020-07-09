@@ -49,7 +49,6 @@ interface TaskListElementProps extends SwitcherOptionProps {
 
 @observer
 class TaskListElement extends React.Component<TaskListElementProps> {
-
   render() {
     return (
       <div
@@ -72,7 +71,6 @@ class TaskStore implements SwitcherStore {
   optionsData = this.tasks;
   @observable activeOption = undefined;
 }
-
 
 class App extends React.Component {
   @observable tasks = new TaskStore();
