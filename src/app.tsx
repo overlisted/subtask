@@ -53,11 +53,11 @@ class TaskListElement extends React.Component<TaskListElementProps> {
   render() {
     return (
       <div
-        className={classNames(
-          "button",
-          this.props.isActive() ? "active" : "",
-          this.props.dateClosed ? "crossed-out" : ""
-        )}
+        className={classNames({
+          "button": true,
+          "active": this.props.isActive(),
+          "crossed-out": this.props.dateClosed
+        })}
         onClick={this.props.activate}
       >
         {this.props.name}
