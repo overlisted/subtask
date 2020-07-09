@@ -77,9 +77,18 @@ class TaskDetails extends React.Component<{selected: Task | null}> {
 
     return (
       <div>
-        <span className="title"></span>
+        <span className="title">{task.name}</span>
         <div className="place task-details">
-
+          <span>{task.description}</span>
+          <span className="not-important">
+            Created at: {task.dateCreated.toDateString()}
+          </span>
+          <span className="not-important">
+            Expiring at: {task.expireDate ? task.expireDate.toDateString() : "Never"}
+          </span>
+          <span className="not-important">
+            Closed at: {task.dateClosed ? task.dateClosed.toDateString() : "Not yet"}
+          </span>
         </div>
       </div>
     );
