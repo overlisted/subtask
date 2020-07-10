@@ -11,7 +11,7 @@ body {
 }
 
 span {
-  display: block;
+  display: flex;
 }
 
 span.title {
@@ -30,6 +30,10 @@ span.not-important {
 .task-details {
   width: 300px;
   min-height: 200px;
+}
+
+.task-details > span {
+  justify-content: space-between;
 }
 
 .place {
