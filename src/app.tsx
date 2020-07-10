@@ -1,6 +1,6 @@
 import React from 'react';
 import './app.css';
-import {Switcher, SwitcherOptionData, SwitcherOptionProps, SwitcherStore} from './UILib/switcher'
+import {Switcher, SwitcherOptionData, SwitcherOptionProps} from './UILib/switcher'
 import {observer} from "mobx-react"
 import {computed, observable} from "mobx";
 import classNames from "classnames";
@@ -59,10 +59,9 @@ class TaskListElement extends React.Component<SwitcherOptionProps<Task>> {
   }
 }
 
-class TaskStore implements SwitcherStore<Task> {
-  @observable optionsData: Task[] = [new Task("name", "desc"), new Task("another", "another desc")];
-
-  @observable activeOption = null;
+class TaskStore {
+  @observable tasks: Task[] = [new Task("name", "desc"), new Task("another", "another desc")];
+  @observable selected: Task | null = null;
 }
 
 @observer
@@ -111,14 +110,28 @@ class TaskDetails extends React.Component<{selected: Task | null}> {
 
 @observer
 class App extends React.Component {
+  constructor() {
+    super({});
+
+    // @ts-ignore
+    window.app = this;
+  }
+
   tasks = new TaskStore();
 
   render() {
     return (
       <>
-        <TaskDetails selected={this.tasks.activeOption}/>
+        <TaskDetails selected={this.tasks.selected}/>
         <div className="place">
-          <Switcher Component={TaskListElement} store={this.tasks}/>
+          <Switcher
+            Component={TaskListElement}
+            optionsData={this.tasks.tasks}
+            activeOption={this.tasks.selected}
+            setActiveOption={value => {
+              this.tasks.selected = value
+            }}
+          />
         </div>
       </>
     )
