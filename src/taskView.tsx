@@ -1,8 +1,28 @@
 import {observer} from "mobx-react";
 import React from "react";
-import {SwitcherOptionProps} from "./UILib/switcher";
+import {Switcher, SwitcherOptionProps} from "./UILib/switcher";
 import classNames from "classnames";
-import {Task} from "./task";
+import {Task, TaskList} from "./task";
+
+@observer
+export class TaskListColumn extends React.Component<{list: TaskList}> {
+  render() {
+    let {list} = this.props;
+
+    return (
+      <div className="place">
+        <Switcher
+          Component={TaskListElement}
+          optionsData={list.tasks}
+          activeOption={list.selected}
+          setActiveOption={value => {
+            list.selected = value;
+          }}
+        />
+      </div>
+    );
+  }
+}
 
 @observer
 export class TaskListElement extends React.Component<SwitcherOptionProps<Task>> {
