@@ -2,7 +2,7 @@ import React from 'react';
 import './app.css';
 import {Switcher, SwitcherOptionData, SwitcherOptionProps, SwitcherStore} from './UILib/switcher'
 import {observer} from "mobx-react"
-import {observable} from "mobx";
+import {computed, observable} from "mobx";
 import classNames from "classnames";
 
 type TaskDate = Date | null;
@@ -18,19 +18,23 @@ class Task implements SwitcherOptionData {
     this.description = description;
     this.expireDate = expireDate;
 
-    this.open();
+    this.isOpen = true;
   }
 
-  close() {
-    this.dateClosed = new Date();
+  @computed get isOpen() {
+    return this.dateClosed === null;
   }
 
-  open() {
-    this.dateClosed = null;
+  @computed get hasExpired() {
+    return !!this.expireDate;
   }
 
-  get completionTook() {
+  @computed get completionTook() {
     return this.dateClosed ? this.dateClosed.getTime() - this.dateCreated.getTime() : null;
+  }
+
+  set isOpen(is: boolean) {
+    this.dateClosed = is ? null : new Date();
   }
 }
 
