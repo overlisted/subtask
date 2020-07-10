@@ -19,7 +19,7 @@ export class Task implements SwitcherOptionData {
   }
 
   @computed get isOpen() {
-    return this.dateClosed === null;
+    return !!this.dateClosed;
   }
 
   @computed get hasExpired() {
