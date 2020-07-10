@@ -9,18 +9,18 @@ export interface SwitcherOptionProps<T extends SwitcherOptionData> {
   activate(): void;
 }
 
-export interface SwitcherStore {
-  optionsData: SwitcherOptionData[];
-  activeOption: SwitcherOptionData | null;
+export interface SwitcherStore<T extends SwitcherOptionData> {
+  optionsData: T[];
+  activeOption: T | null;
 }
 
-interface SwitcherPropsData {
-  store: SwitcherStore;
+interface SwitcherPropsData<T extends SwitcherOptionData> {
+  store: SwitcherStore<T>;
   Component: new (props: any) => React.Component<SwitcherOptionProps<SwitcherOptionData>>;
 }
 
 @observer
-export class Switcher extends React.Component<SwitcherPropsData> {
+export class Switcher<OptionData extends SwitcherOptionData> extends React.Component<SwitcherPropsData<OptionData>> {
   render() {
     const {Component, store} = this.props;
 

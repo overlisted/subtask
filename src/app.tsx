@@ -59,7 +59,7 @@ class TaskListElement extends React.Component<SwitcherOptionProps<Task>> {
   }
 }
 
-class TaskStore implements SwitcherStore {
+class TaskStore implements SwitcherStore<Task> {
   @observable optionsData: Task[] = [new Task("name", "desc"), new Task("another", "another desc")];
 
   @observable activeOption = null;
