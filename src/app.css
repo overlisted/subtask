@@ -5,9 +5,15 @@ body {
 
 #react-root {
   margin: 10px;
-  display: flex;
   color: #595959;
   font-family: "Ubuntu", "Helvetica Neue", sans-serif;
+  display: grid;
+  grid-gap: 2px;
+  grid-template-columns: max-content max-content;
+  grid-template-rows: max-content max-content;
+  grid-template-areas:
+    "buttons title"
+    "list details";
 }
 
 span {
@@ -20,6 +26,7 @@ div.title {
   justify-content: center;
   align-items: center;
   padding: 10px;
+  grid-area: title;
 }
 
 div.title > span {
@@ -36,9 +43,18 @@ span.not-important {
   color: #a9a9a9;
 }
 
+.task-list {
+  grid-area: list;
+}
+
+.task-list-actions {
+  grid-area: buttons;
+}
+
 .task-details {
   width: 300px;
   min-height: 200px;
+  grid-area: details;
 }
 
 .task-details > span {

@@ -12,8 +12,8 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <TaskDetails selected={this.tasksLists[this.tasksLists.length - 1].selected}/>
         <TaskListColumn list={this.tasksLists[0]}/>
+        <TaskDetails selected={this.tasksLists[this.tasksLists.length - 1].selected}/>
       </>
     );
   }

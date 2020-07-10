@@ -12,8 +12,8 @@ export class TaskListColumn extends React.Component<{list: TaskList<any>}> {
     let {list} = this.props;
 
     return (
-      <div>
-        <div className="place">
+      <>
+        <div className="place task-list-actions">
           <span
             className="button suggested-action"
             onClick={() => list.tasks.push(new Task("A task", ""))}
@@ -27,7 +27,7 @@ export class TaskListColumn extends React.Component<{list: TaskList<any>}> {
             New group
           </span>
         </div>
-        <div className="place">
+        <div className="place task-list">
           <Switcher
             Component={TaskListElement}
             optionsData={list.tasks}
@@ -37,7 +37,7 @@ export class TaskListColumn extends React.Component<{list: TaskList<any>}> {
             }}
           />
         </div>
-      </div>
+      </>
     );
   }
 }
@@ -83,15 +83,15 @@ export class TaskDetails extends React.Component<{selected: Task<string> | null}
 
     if(!task) {
       return (
-        <div>
+        <>
           <div className="title"><span className="title">Select a task</span></div>
           <div className="place task-details"/>
-        </div>
+        </>
       );
     }
 
     return (
-      <div>
+      <>
         <div className="title">
           <span className={classNames({"title": true, "crossed-out": !task.isOpen})}>
             {
@@ -126,7 +126,7 @@ export class TaskDetails extends React.Component<{selected: Task<string> | null}
             <TaskCloseButton isOpen={task.isOpen} toggle={() => task.isOpen = !task.isOpen}/>
           </span>
         </div>
-      </div>
+      </>
     );
   }
 }
