@@ -1,23 +1,23 @@
 import {SwitcherOptionData} from "./UILib/switcher";
 import {computed, observable} from "mobx";
 
-export class TaskList {
-  @observable tasks: Task[] = [];
-  @observable selected: Task | null = null;
+export class TaskList<C> {
+  @observable tasks: Task<C>[] = [];
+  @observable selected: Task<C> | null = null;
 }
 
 type TaskDate = Date | null;
 
-export class Task implements SwitcherOptionData {
+export class Task<C> implements SwitcherOptionData {
   @observable name: string;
-  @observable description: string;
+  @observable content: C;
   dateCreated: Date = new Date();
   expireDate: TaskDate;
   @observable dateClosed: TaskDate = null;
 
-  constructor(name: string, description: string = "", expireDate: TaskDate = null) {
+  constructor(name: string, content: C, expireDate: TaskDate = null) {
     this.name = name;
-    this.description = description;
+    this.content = content;
     this.expireDate = expireDate;
 
     this.isOpen = true;

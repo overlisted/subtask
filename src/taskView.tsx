@@ -7,7 +7,7 @@ import {observable} from "mobx";
 import {Field} from "./UILib/editable";
 
 @observer
-export class TaskListColumn extends React.Component<{list: TaskList}> {
+export class TaskListColumn extends React.Component<{list: TaskList<any>}> {
   render() {
     let {list} = this.props;
 
@@ -16,7 +16,7 @@ export class TaskListColumn extends React.Component<{list: TaskList}> {
         <div className="place">
           <span
             className="button suggested-action"
-            onClick={() => list.tasks.push(new Task("A task"))}
+            onClick={() => list.tasks.push(new Task("A task", ""))}
           >
             New task
           </span>
@@ -43,7 +43,7 @@ export class TaskListColumn extends React.Component<{list: TaskList}> {
 }
 
 @observer
-export class TaskListElement extends React.Component<SwitcherOptionProps<Task>> {
+export class TaskListElement extends React.Component<SwitcherOptionProps<Task<any>>> {
   render() {
     const {element} = this.props;
 
@@ -75,7 +75,7 @@ class TaskCloseButton extends React.Component<{readonly isOpen: boolean, toggle(
 }
 
 @observer
-export class TaskDetails extends React.Component<{selected: Task | null}> {
+export class TaskDetails extends React.Component<{selected: Task<string> | null}> {
   @observable isEditing: boolean = false;
 
   render() {
@@ -111,8 +111,8 @@ export class TaskDetails extends React.Component<{selected: Task | null}> {
           <span>
             {
               this.isEditing
-                ? <Field isTextarea={true} value={task.description} setValue={value => task.description = value}/>
-                : task.description
+                ? <Field isTextarea={true} value={task.content} setValue={value => task.content = value}/>
+                : task.content
             }
           </span>
           <span className="not-important">

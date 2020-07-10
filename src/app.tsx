@@ -7,7 +7,7 @@ import {observable} from "mobx";
 
 @observer
 class App extends React.Component {
-  @observable tasksLists: TaskList[] = [new TaskList()];
+  @observable tasksLists: TaskList<any>[] = [new TaskList()];
 
   render() {
     return (
