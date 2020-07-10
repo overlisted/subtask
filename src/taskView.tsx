@@ -10,7 +10,7 @@ export class TaskListColumn extends React.Component<{group: GroupTask}> {
     let {group} = this.props;
 
     return (
-      <>
+      <div className="task-list">
         <div className="place task-list-actions">
           <span
             className="button suggested-action"
@@ -25,7 +25,7 @@ export class TaskListColumn extends React.Component<{group: GroupTask}> {
             New group
           </span>
         </div>
-        <div className="place task-list">
+        <div className="place">
           <Switcher
             Component={TaskListElement}
             optionsData={group.content}
@@ -35,7 +35,7 @@ export class TaskListColumn extends React.Component<{group: GroupTask}> {
             }}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

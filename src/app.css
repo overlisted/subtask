@@ -12,7 +12,7 @@ body {
   grid-template-columns: max-content max-content;
   grid-template-rows: max-content max-content;
   grid-template-areas:
-    "buttons title"
+    "lists title"
     "lists details";
 }
 
@@ -43,12 +43,13 @@ span.not-important {
   color: #a9a9a9;
 }
 
-.task-list {
+.task-lists {
+  display: flex;
   grid-area: lists;
 }
 
 .task-list-actions {
-  grid-area: buttons;
+  /*grid-area: buttons;*/
 }
 
 .task-details {

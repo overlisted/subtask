@@ -24,6 +24,7 @@ class App extends React.Component {
   render() {
     return (
       <>
+        <TaskListColumns groups={this.groupsHierarchy}/>
         <TaskDetails selected={this.mainGroup}/>
       </>
     );

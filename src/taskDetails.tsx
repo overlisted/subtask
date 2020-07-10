@@ -70,20 +70,6 @@ class StringTaskDetails extends React.Component<TaskDetailsProps<Task<string>>> 
 }
 
 @observer
-class GroupTaskDetails extends React.Component<TaskDetailsProps<GroupTask>> {
-  render() {
-    const {task} = this.props
-
-    return (
-      <>
-        <TaskListColumn group={task}/>
-        <TaskDetails selected={task.selected}/>
-      </>
-    );
-  }
-}
-
-@observer
 export class TaskDetails extends React.Component<{selected: Task<any> | null}> {
   render() {
     const task = this.props.selected;
@@ -97,8 +83,19 @@ export class TaskDetails extends React.Component<{selected: Task<any> | null}> {
       );
     }
 
-    if(task instanceof GroupTask) return <GroupTaskDetails task={task}/>
+    if(task instanceof GroupTask) return <TaskDetails selected={task.selected}/>;
 
     return <StringTaskDetails task={task}/>;
+  }
+}
+
+@observer
+export class TaskListColumns extends React.Component<{groups: GroupTask[]}> {
+  render() {
+    return (
+      <div className="task-lists">
+        {this.props.groups.map(it => <TaskListColumn group={it} key={it.dateCreated.getTime()}/>)}
+      </div>
+    );
   }
 }
