@@ -14,7 +14,7 @@ export class TaskListColumn extends React.Component<{list: TaskList}> {
     return (
       <div>
         <div className="place">
-          <span className="button" onClick={() => list.tasks.push(new Task("A task"))}>New task</span>
+          <span className="button suggested-action" onClick={() => list.tasks.push(new Task("A task"))}>New task</span>
         </div>
         <div className="place">
           <Switcher

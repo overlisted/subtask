@@ -13,8 +13,6 @@ body {
 span {
   display: flex;
   font-size: 16px;
-  margin-left: 5px;
-  margin-right: 5px;
 }
 
 div.title {
@@ -22,6 +20,11 @@ div.title {
   justify-content: center;
   align-items: center;
   padding: 10px;
+}
+
+div.title > span {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 span.title {
