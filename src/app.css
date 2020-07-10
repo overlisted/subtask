@@ -13,23 +13,20 @@ body {
 span {
   display: flex;
   font-size: 16px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
-span > * {
-  margin: 5px;
+div.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 }
 
 span.title {
   font-size: 20px;
   font-weight: bold;
-  background-color: #f0f0f0;
-  padding: 10px;
-  justify-content: center;
-}
-
-span.title > span {
-  margin-top: auto;
-  margin-bottom: auto;
 }
 
 span.not-important {

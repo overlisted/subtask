@@ -73,7 +73,7 @@ export class TaskDetails extends React.Component<{selected: Task | null}> {
     if(!task) {
       return (
         <div>
-          <span className="title">Select a task</span>
+          <div className="title"><span className="title">Select a task</span></div>
           <div className="place task-details"/>
         </div>
       );
@@ -81,21 +81,22 @@ export class TaskDetails extends React.Component<{selected: Task | null}> {
 
     return (
       <div>
-        <span className={classNames({"title": true, "crossed-out": !task.isOpen})}>
-          {task.name}
+        <div className="title">
+          <span className={classNames({"title": true, "crossed-out": !task.isOpen})}>
+            {
+              this.isEditing
+                ? <Field value={task.name} setValue={value => task.name = value}/>
+                : task.name
+            }
+          </span>
           <span
-            className="clickable not-important"
+            className="clickable not-important switch-edit"
             onClick={() => this.isEditing = !this.isEditing}
           >
             {this.isEditing ? "Finish" : "Edit"}
           </span>
-        </span>
+        </div>
         <div className="place task-details">
-          {
-            this.isEditing
-              ? <Field value={task.name} setValue={value => task.name = value}/>
-              : task.name
-          }
           <span>
             {
               this.isEditing
