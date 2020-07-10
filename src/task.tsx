@@ -19,11 +19,11 @@ export class Task implements SwitcherOptionData {
   }
 
   @computed get isOpen() {
-    return !!this.dateClosed;
+    return !this.dateClosed;
   }
 
   @computed get hasExpired() {
-    return !!this.expireDate;
+    return !this.expireDate;
   }
 
   @computed get completionTook() {
