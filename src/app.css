@@ -13,7 +13,7 @@ body {
   grid-template-rows: max-content max-content;
   grid-template-areas:
     "buttons title"
-    "list details";
+    "lists details";
 }
 
 span {
@@ -44,7 +44,7 @@ span.not-important {
 }
 
 .task-list {
-  grid-area: list;
+  grid-area: lists;
 }
 
 .task-list-actions {
