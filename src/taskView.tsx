@@ -3,6 +3,8 @@ import React from "react";
 import {Switcher, SwitcherOptionProps} from "./UILib/switcher";
 import classNames from "classnames";
 import {Task, TaskList} from "./task";
+import {observable} from "mobx";
+import {Field} from "./UILib/editable";
 
 @observer
 export class TaskListColumn extends React.Component<{list: TaskList}> {
@@ -89,7 +91,18 @@ export class TaskDetails extends React.Component<{selected: Task | null}> {
           </span>
         </span>
         <div className="place task-details">
-          <span>{task.description}</span>
+          {
+            this.isEditing
+              ? <Field value={task.name} setValue={value => task.name = value}/>
+              : task.name
+          }
+          <span>
+            {
+              this.isEditing
+                ? <Field isTextarea={true} value={task.description} setValue={value => task.description = value}/>
+                : task.description
+            }
+          </span>
           <span className="not-important">
             Created at: {task.dateCreated.toDateString()}
           </span>

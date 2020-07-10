@@ -10,7 +10,7 @@ type TaskDate = Date | null;
 
 export class Task implements SwitcherOptionData {
   @observable name: string;
-  description: string;
+  @observable description: string;
   dateCreated: Date = new Date();
   expireDate: TaskDate;
   @observable dateClosed: TaskDate = null;
