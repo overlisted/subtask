@@ -63,6 +63,8 @@ class TaskCloseButton extends React.Component<{readonly isOpen: boolean, toggle(
 
 @observer
 export class TaskDetails extends React.Component<{selected: Task | null}> {
+  @observable isEditing: boolean = false;
+
   render() {
     const task = this.props.selected;
 
@@ -77,7 +79,15 @@ export class TaskDetails extends React.Component<{selected: Task | null}> {
 
     return (
       <div>
-        <span className={classNames({"title": true, "crossed-out": !task.isOpen})}>{task.name}</span>
+        <span className={classNames({"title": true, "crossed-out": !task.isOpen})}>
+          {task.name}
+          <span
+            className="clickable not-important"
+            onClick={() => this.isEditing = !this.isEditing}
+          >
+            {this.isEditing ? "Finish" : "Edit"}
+          </span>
+        </span>
         <div className="place task-details">
           <span>{task.description}</span>
           <span className="not-important">
