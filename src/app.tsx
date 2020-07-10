@@ -1,19 +1,19 @@
 import React from "react";
 import "./app.css";
 import {observer} from "mobx-react";
-import {TaskList} from "./task";
+import {GroupTask} from "./task";
 import {TaskDetails, TaskListColumn} from "./taskView";
 import {observable} from "mobx";
 
 @observer
 class App extends React.Component {
-  @observable tasksLists: TaskList<any>[] = [new TaskList()];
+  @observable mainGroup: GroupTask = new GroupTask("\0global", [], null);
 
   render() {
     return (
       <>
-        <TaskListColumn list={this.tasksLists[0]}/>
-        <TaskDetails selected={this.tasksLists[this.tasksLists.length - 1].selected}/>
+        <TaskListColumn group={this.mainGroup}/>
+        <TaskDetails selected={this.mainGroup.selected}/>
       </>
     );
   }

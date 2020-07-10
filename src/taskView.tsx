@@ -2,27 +2,27 @@ import {observer} from "mobx-react";
 import React from "react";
 import {Switcher, SwitcherOptionProps} from "./UILib/switcher";
 import classNames from "classnames";
-import {Task, TaskList} from "./task";
+import {GroupTask, Task} from "./task";
 import {observable} from "mobx";
 import {Field} from "./UILib/editable";
 
 @observer
-export class TaskListColumn extends React.Component<{list: TaskList<any>}> {
+export class TaskListColumn extends React.Component<{group: GroupTask}> {
   render() {
-    let {list} = this.props;
+    let {group} = this.props;
 
     return (
       <>
         <div className="place task-list-actions">
           <span
             className="button suggested-action"
-            onClick={() => list.tasks.push(new Task("A task", ""))}
+            onClick={() => group.content.push(new Task("A task", ""))}
           >
             New task
           </span>
           <span
             className="button"
-            onClick={() => {list.tasks.push(new Task<Task<any>[]>("A group", []))}}
+            onClick={() => {group.content.push(new GroupTask("A group", []))}}
           >
             New group
           </span>
@@ -30,10 +30,10 @@ export class TaskListColumn extends React.Component<{list: TaskList<any>}> {
         <div className="place task-list">
           <Switcher
             Component={TaskListElement}
-            optionsData={list.tasks}
-            activeOption={list.selected}
+            optionsData={group.content}
+            activeOption={group.selected}
             setActiveOption={value => {
-              list.selected = value;
+              group.selected = value;
             }}
           />
         </div>

@@ -1,11 +1,6 @@
 import {SwitcherOptionData} from "./UILib/switcher";
 import {computed, observable} from "mobx";
 
-export class TaskList<C> {
-  @observable tasks: Task<C>[] = [];
-  @observable selected: Task<C> | null = null;
-}
-
 type TaskDate = Date | null;
 
 export class Task<C> implements SwitcherOptionData {
@@ -42,4 +37,8 @@ export class Task<C> implements SwitcherOptionData {
   set isOpen(is: boolean) {
     this.dateClosed = is ? null : new Date();
   }
+}
+
+export class GroupTask extends Task<Task<any>[]> {
+  @observable selected: Task<any> | null = null;
 }
