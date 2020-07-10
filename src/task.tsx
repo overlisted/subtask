@@ -35,6 +35,10 @@ export class Task implements SwitcherOptionData {
     return this.dateClosed ? this.dateClosed.getTime() - this.dateCreated.getTime() : null;
   }
 
+  get key() {
+    return this.dateCreated.getTime();
+  }
+
   set isOpen(is: boolean) {
     this.dateClosed = is ? null : new Date();
   }

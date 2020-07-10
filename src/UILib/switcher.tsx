@@ -1,7 +1,9 @@
 import React from "react";
 import {observer} from "mobx-react";
 
-export interface SwitcherOptionData {}
+export interface SwitcherOptionData {
+  readonly key: React.Key;
+}
 
 export interface SwitcherOptionProps<T extends SwitcherOptionData> {
   element: T;
@@ -25,6 +27,7 @@ export class Switcher<OptionData extends SwitcherOptionData> extends React.Compo
     return optionsData.map(it => {
       return <Component
         element={it}
+        key={it.key}
         isActive={() => activeOption === it}
         activate={() => setActiveOption(it)}
       />
