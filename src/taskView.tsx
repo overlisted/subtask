@@ -10,15 +10,20 @@ export class TaskListColumn extends React.Component<{list: TaskList}> {
     let {list} = this.props;
 
     return (
-      <div className="place">
-        <Switcher
-          Component={TaskListElement}
-          optionsData={list.tasks}
-          activeOption={list.selected}
-          setActiveOption={value => {
-            list.selected = value;
-          }}
-        />
+      <div>
+        <div className="place">
+          <span className="button" onClick={() => list.tasks.push(new Task("A task"))}>New task</span>
+        </div>
+        <div className="place">
+          <Switcher
+            Component={TaskListElement}
+            optionsData={list.tasks}
+            activeOption={list.selected}
+            setActiveOption={value => {
+              list.selected = value;
+            }}
+          />
+        </div>
       </div>
     );
   }
