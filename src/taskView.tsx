@@ -41,12 +41,14 @@ export class TaskDetails extends React.Component<{selected: Task | null}> {
   render() {
     const task = this.props.selected;
 
-    if(!task) return (
-      <div>
-        <span className="title">Select a task</span>
-        <div className="place task-details"/>
-      </div>
-    );
+    if(!task) {
+      return (
+        <div>
+          <span className="title">Select a task</span>
+          <div className="place task-details"/>
+        </div>
+      );
+    }
 
     return (
       <div>

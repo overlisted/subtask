@@ -7,7 +7,7 @@ body {
   margin: 10px;
   display: flex;
   color: #595959;
-  font-family: 'Ubuntu', 'Helvetica Neue', sans-serif;
+  font-family: "Ubuntu", "Helvetica Neue", sans-serif;
 }
 
 span {
@@ -39,7 +39,7 @@ span.not-important {
 .place {
   border-radius: 10px;
   display: block;
-  background: #ffffff;
+  background: #fff;
   border-collapse: collapse;
   border-color: #f0f0f0;
   border-style: solid;
@@ -47,7 +47,7 @@ span.not-important {
 }
 
 .active {
-  background: #2F9599;
+  background: #2f9599;
   color: #f0f0f0;
 }
 
