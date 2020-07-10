@@ -22,7 +22,7 @@ export class TaskListColumn extends React.Component<{list: TaskList<any>}> {
           </span>
           <span
             className="button"
-            onClick={() => {}}
+            onClick={() => {list.tasks.push(new Task<Task<any>[]>("A task", []))}}
           >
             New group
           </span>
