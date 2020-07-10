@@ -50,6 +50,7 @@ class TaskListElement extends React.Component<SwitcherOptionProps<Task>> {
           "active": this.props.isActive(),
           "crossed-out": !element.isOpen
         })}
+        key={element.dateCreated.getTime()}
         onClick={this.props.activate}
       >
         {element.name}
