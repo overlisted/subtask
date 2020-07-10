@@ -110,13 +110,6 @@ class TaskDetails extends React.Component<{selected: Task | null}> {
 
 @observer
 class App extends React.Component {
-  constructor() {
-    super({});
-
-    // @ts-ignore
-    window.app = this;
-  }
-
   tasks = new TaskStore();
 
   render() {
