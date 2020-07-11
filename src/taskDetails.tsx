@@ -92,9 +92,11 @@ export class TaskDetails extends React.Component<{selected: Task<any> | null}> {
 @observer
 export class TaskListColumns extends React.Component<{groups: GroupTask[]}> {
   render() {
+    const {groups} = this.props;
+
     return (
-      <div className="task-lists">
-        {this.props.groups.map(it => <TaskListColumn group={it} key={it.dateCreated.getTime()}/>)}
+      <div className="task-lists" style={{gridTemplateAreas: `"${groups.map(() => ". ").join("")}"`}}>
+        {groups.map(it => <TaskListColumn group={it} key={it.dateCreated.getTime()}/>)}
       </div>
     );
   }
@@ -102,9 +104,11 @@ export class TaskListColumns extends React.Component<{groups: GroupTask[]}> {
 
 export class AllTasksActions extends React.Component<{groups: GroupTask[]}> {
   render() {
+    const {groups} = this.props;
+
     return (
-      <div className="all-tasks-actions">
-        {this.props.groups.map(it => <TaskListActions content={it.content} key={it.dateCreated.getTime()}/>)}
+      <div className="all-tasks-actions" style={{gridTemplateAreas: `"${groups.map(() => ". ").join("")}"`}}>
+        {groups.map(it => <TaskListActions content={it.content} key={it.dateCreated.getTime()}/>)}
       </div>
     );
   }
