@@ -4,6 +4,29 @@ import {Switcher, SwitcherOptionProps} from "./UILib/switcher";
 import classNames from "classnames";
 import {GroupTask, Task} from "./task";
 
+export class TaskListActions extends React.Component<{content: Task<any>[]}> {
+  render() {
+    const {content} = this.props;
+
+    return (
+      <div className="place task-list-actions">
+          <span
+            className="button suggested-action"
+            onClick={() => content.push(new Task("A task", ""))}
+          >
+            New task
+          </span>
+        <span
+          className="button"
+          onClick={() => {content.push(new GroupTask("A group", []))}}
+        >
+            New group
+          </span>
+      </div>
+    );
+  }
+}
+
 @observer
 export class TaskListColumn extends React.Component<{group: GroupTask}> {
   render() {
@@ -11,20 +34,7 @@ export class TaskListColumn extends React.Component<{group: GroupTask}> {
 
     return (
       <div className="task-list">
-        <div className="place task-list-actions">
-          <span
-            className="button suggested-action"
-            onClick={() => group.content.push(new Task("A task", ""))}
-          >
-            New task
-          </span>
-          <span
-            className="button"
-            onClick={() => {group.content.push(new GroupTask("A group", []))}}
-          >
-            New group
-          </span>
-        </div>
+        <TaskListActions content={group.content}/>
         <div className="place">
           <Switcher
             Component={TaskListElement}
