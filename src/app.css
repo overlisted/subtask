@@ -10,7 +10,7 @@ body {
   display: grid;
   grid-gap: 2px;
   grid-template-columns: max-content max-content;
-  grid-template-rows: max-content max-content;
+  grid-template-rows: auto max-content;
   grid-template-areas:
     "buttons title"
     "lists details";
@@ -51,6 +51,10 @@ span.not-important {
 .all-tasks-actions {
   display: flex;
   grid-area: buttons;
+}
+
+.task-list {
+  width: 100%;
 }
 
 .task-details {
