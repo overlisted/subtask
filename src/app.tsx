@@ -24,8 +24,10 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <AllTasksActions groups={this.groupsHierarchy}/>
-        <TaskListColumns groups={this.groupsHierarchy}/>
+        <aside className="sidebar">
+          <AllTasksActions groups={this.groupsHierarchy}/>
+          <TaskListColumns groups={this.groupsHierarchy}/>
+        </aside>
         <TaskDetails selected={this.mainGroup}/>
       </>
     );
