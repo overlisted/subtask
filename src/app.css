@@ -13,58 +13,6 @@ body {
     / minmax(100px, max-content) auto;
 }
 
-div.title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-}
-
-div.title > span {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-span.title {
-  font-size: 20px;
-  font-weight: bold;
-}
-
 span.not-important {
   color: #a9a9a9;
-}
-
-.sidebar {
-  display: grid;;
-  gap: inherit;
-  grid-column: 1 / 2;
-  grid-row: 1 / 3;
-  grid-template-columns: subgrid;
-  grid-template-rows: subgrid;
-}
-
-.sidebar > div {
-  display: grid;
-  gap: inherit;
-  grid-auto-flow: row;
-  grid-auto-columns: minmax(100px, max-content);
-  grid-template-columns: minmax(100px, max-content);
-  grid-template-rows: subgrid;
-}
-
-.task-details > span {
-  justify-content: space-between;
-}
-
-.task-list-element {
-  display: flex;
-}
-
-.task-list-element .rename {
-  margin-left: 10px;;
-  opacity: 0;
-}
-
-.task-list-element:hover .rename {
-  opacity: 1;
 }

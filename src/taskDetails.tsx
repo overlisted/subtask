@@ -4,7 +4,6 @@ import {GroupTask, Task} from "./task";
 import {observable} from "mobx";
 import classNames from "classnames";
 import {Field} from "./UILib/editable";
-import {TaskListActions, TaskListColumn} from "./taskView";
 
 @observer
 class TaskCloseButton extends React.Component<{readonly isOpen: boolean, toggle(): void}> {
@@ -86,30 +85,5 @@ export class TaskDetails extends React.Component<{selected: Task<any> | null}> {
     if(task instanceof GroupTask) return <TaskDetails selected={task.selected}/>;
 
     return <StringTaskDetails task={task}/>;
-  }
-}
-
-@observer
-export class TaskListColumns extends React.Component<{groups: GroupTask[]}> {
-  render() {
-    const {groups} = this.props;
-
-    return (
-      <div className="task-lists" style={{gridTemplateAreas: `"${groups.map(() => ". ").join("")}"`}}>
-        {groups.map(it => <TaskListColumn group={it} key={it.dateCreated.getTime()}/>)}
-      </div>
-    );
-  }
-}
-
-export class AllTasksActions extends React.Component<{groups: GroupTask[]}> {
-  render() {
-    const {groups} = this.props;
-
-    return (
-      <div className="all-tasks-actions" style={{gridTemplateAreas: `"${groups.map(() => ". ").join("")}"`}}>
-        {groups.map(it => <TaskListActions content={it.content} key={it.dateCreated.getTime()}/>)}
-      </div>
-    );
   }
 }
