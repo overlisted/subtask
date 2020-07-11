@@ -4,7 +4,7 @@ import {GroupTask, Task} from "./task";
 import {observable} from "mobx";
 import classNames from "classnames";
 import {Field} from "./UILib/editable";
-import {TaskListColumn} from "./taskView";
+import {TaskListActions, TaskListColumn} from "./taskView";
 
 @observer
 class TaskCloseButton extends React.Component<{readonly isOpen: boolean, toggle(): void}> {
@@ -95,6 +95,16 @@ export class TaskListColumns extends React.Component<{groups: GroupTask[]}> {
     return (
       <div className="task-lists">
         {this.props.groups.map(it => <TaskListColumn group={it} key={it.dateCreated.getTime()}/>)}
+      </div>
+    );
+  }
+}
+
+export class AllTasksActions extends React.Component<{groups: GroupTask[]}> {
+  render() {
+    return (
+      <div className="all-tasks-actions">
+        {this.props.groups.map(it => <TaskListActions content={it.content} key={it.dateCreated.getTime()}/>)}
       </div>
     );
   }

@@ -3,7 +3,7 @@ import "./app.css";
 import {observer} from "mobx-react";
 import {GroupTask, Task} from "./task";
 import {computed, observable} from "mobx";
-import {TaskDetails, TaskListColumns} from "./taskDetails";
+import {AllTasksActions, TaskDetails, TaskListColumns} from "./taskDetails";
 
 @observer
 class App extends React.Component {
@@ -24,6 +24,7 @@ class App extends React.Component {
   render() {
     return (
       <>
+        <AllTasksActions groups={this.groupsHierarchy}/>
         <TaskListColumns groups={this.groupsHierarchy}/>
         <TaskDetails selected={this.mainGroup}/>
       </>

@@ -33,18 +33,15 @@ export class TaskListColumn extends React.Component<{group: GroupTask}> {
     let {group} = this.props;
 
     return (
-      <div className="task-list">
-        <TaskListActions content={group.content}/>
-        <div className="place">
-          <Switcher
-            Component={TaskListElement}
-            optionsData={group.content}
-            activeOption={group.selected}
-            setActiveOption={value => {
-              group.selected = value;
-            }}
-          />
-        </div>
+      <div className="place task-list">
+        <Switcher
+          Component={TaskListElement}
+          optionsData={group.content}
+          activeOption={group.selected}
+          setActiveOption={value => {
+            group.selected = value;
+          }}
+        />
       </div>
     );
   }

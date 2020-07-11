@@ -12,7 +12,7 @@ body {
   grid-template-columns: max-content max-content;
   grid-template-rows: max-content max-content;
   grid-template-areas:
-    "lists title"
+    "buttons title"
     "lists details";
 }
 
@@ -48,8 +48,9 @@ span.not-important {
   grid-area: lists;
 }
 
-.task-list-actions {
-  /*grid-area: buttons;*/
+.all-tasks-actions {
+  display: flex;
+  grid-area: buttons;
 }
 
 .task-details {
