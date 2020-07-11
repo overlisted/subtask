@@ -3,6 +3,7 @@ import React from "react";
 import {Switcher, SwitcherOptionProps} from "./UILib/switcher";
 import classNames from "classnames";
 import {GroupTask, Task} from "./task";
+import {observable} from "mobx";
 
 export class TaskListActions extends React.Component<{content: Task<any>[]}> {
   render() {
@@ -49,6 +50,8 @@ export class TaskListColumn extends React.Component<{group: GroupTask}> {
 
 @observer
 export class TaskListElement extends React.Component<SwitcherOptionProps<Task<any>>> {
+  @observable isRenaming = false;
+
   render() {
     const {element} = this.props;
 
@@ -56,6 +59,7 @@ export class TaskListElement extends React.Component<SwitcherOptionProps<Task<an
       <div
         className={classNames({
           "button": true,
+          "task-list-element": true,
           "active": this.props.isActive(),
           "crossed-out": !element.isOpen
         })}
@@ -63,6 +67,12 @@ export class TaskListElement extends React.Component<SwitcherOptionProps<Task<an
         onClick={this.props.activate}
       >
         {element.name}
+        <span
+          className="clickable not-important rename"
+          onClick={() => this.isRenaming = !this.isRenaming}
+        >
+          {this.isRenaming ? "finish" : "rename"}
+        </span>
       </div>
     );
   }

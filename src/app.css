@@ -55,3 +55,16 @@ span.not-important {
 .task-details > span {
   justify-content: space-between;
 }
+
+.task-list-element {
+  display: flex;
+}
+
+.task-list-element .rename {
+  margin-left: 10px;;
+  opacity: 0;
+}
+
+.task-list-element:hover .rename {
+  opacity: 1;
+}
