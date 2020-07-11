@@ -8,7 +8,7 @@ body {
   color: #595959;
   font-family: "Ubuntu", "Helvetica Neue", sans-serif;
   display: grid;
-  grid-gap: 5px;
+  gap: 5px;
   grid-template:
     "buttons title" max-content
     "lists details" minmax(200px, max-content)
@@ -25,7 +25,6 @@ div.title {
   justify-content: center;
   align-items: center;
   padding: 10px;
-  grid-area: title;
 }
 
 div.title > span {
@@ -40,11 +39,6 @@ span.title {
 
 span.not-important {
   color: #a9a9a9;
-}
-
-.task-lists {
-  display: flex;
-  grid-area: lists;
 }
 
 .sidebar {
