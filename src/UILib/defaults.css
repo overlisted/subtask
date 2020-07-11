@@ -1,0 +1,49 @@
+#react-root {
+  color: #595959;
+  font-family: "Ubuntu", "Helvetica Neue", sans-serif;
+  display: grid;
+}
+
+span {
+  display: flex;
+  font-size: 16px;
+}
+
+.button {
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.crossed-out {
+  text-decoration: line-through;
+}
+
+.suggested-action {
+  background-color: #6db442;
+  color: #f0f0f0;
+}
+
+.link {
+  color: #5294e2;
+}
+
+.place {
+  border-radius: 10px;
+  display: block;
+  background: #fff;
+  padding: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+.active {
+  background-color: #2f9599;
+  color: #f0f0f0;
+}
