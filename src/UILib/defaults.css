@@ -3,8 +3,13 @@ body {
 }
 
 #react-root {
+  display: block;
   color: #595959;
   font-family: "Ubuntu", "Helvetica Neue", sans-serif;
+}
+
+div {
+  display: flex;
 }
 
 span {

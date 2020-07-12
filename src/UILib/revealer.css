@@ -1,6 +1,7 @@
 .revealer {
   border-radius: 5px 5px 0 0;
   background-color: #fff;
+  flex-direction: column;
 }
 
 .revealer > .header {
@@ -11,4 +12,8 @@
 
 .revealer > .header.active {
   background-color: #2f9599;
+}
+
+.revealer > .content {
+  flex-direction: column;
 }
