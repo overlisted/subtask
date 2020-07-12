@@ -40,5 +40,7 @@ export class Task<C> implements SwitcherOptionData {
 }
 
 export class GroupTask extends Task<Task<any>[]> {
-  @observable selected: Task<any> | null = null;
+  constructor(name: string, content: Task<Task<any>>[] = [], expireDate: TaskDate = null) {
+    super(name, content, expireDate);
+  }
 }
