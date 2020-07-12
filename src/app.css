@@ -1,18 +1,3 @@
 body {
-  margin: 0;
   background-color: #f0f0f0;
-}
-
-#react-root {
-  margin: 10px;
-  display: grid;
-  gap: 5px;
-  grid-template:
-    "buttons title" max-content
-    "lists details" minmax(200px, max-content)
-    / minmax(100px, max-content) auto;
-}
-
-span.not-important {
-  color: #a9a9a9;
 }

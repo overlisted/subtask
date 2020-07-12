@@ -1,7 +1,10 @@
+body {
+  margin: 0;
+}
+
 #react-root {
   color: #595959;
   font-family: "Ubuntu", "Helvetica Neue", sans-serif;
-  display: grid;
 }
 
 span {
@@ -32,17 +35,10 @@ span {
   color: #5294e2;
 }
 
-.place {
-  border-radius: 10px;
-  display: block;
-  background: #fff;
-  padding: 5px;
-}
-
-.hidden {
-  display: none;
-}
-
 .no-display {
   display: none;
+}
+
+.not-important {
+  color: #a9a9a9;
 }

@@ -12,9 +12,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <>
-        <AnyTaskView task={this.mainGroup}/>
-      </>
+      <AnyTaskView task={this.mainGroup}/>
     );
   }
 }
