@@ -1,6 +1,8 @@
 import React from "react";
 import {Task} from "./task";
+import {observer} from "mobx-react";
 
+@observer
 export default class StringTaskView extends React.Component<{task: Task<string>}> {
   render() {
     const {task} = this.props;

@@ -42,7 +42,13 @@ class TaskRevealerTitle extends React.Component<{task: Task<any>}> {
     const {task} = this.props;
 
     return <div className="task-revealer-title">
-      {task.name}
+      <span>{task.name}</span>
+      <span
+        onClick={() => task.isOpen = !task.isOpen}
+        className="clickable not-important"
+      >
+        {task.isOpen ? "Close" : "Reopen"}
+      </span>
     </div>;
   }
 }
