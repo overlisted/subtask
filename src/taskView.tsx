@@ -3,6 +3,7 @@ import {GroupTask, Task} from "./task";
 import Revealer from "./UILib/revealer";
 import {observer} from "mobx-react";
 import Button from "./UILib/button";
+import StringTaskView from "./stringTaskView";
 
 @observer
 class GroupTaskView extends React.Component<{task: GroupTask}> {
@@ -15,15 +16,6 @@ class GroupTaskView extends React.Component<{task: GroupTask}> {
 
       {content.map(it => <AnyTaskView task={it} key={it.dateCreated.getTime()}/>)}
     </div>
-  }
-}
-
-@observer
-class StringTaskView extends React.Component<{task: Task<string>}> {
-  render() {
-    return <div>
-      <span>task</span>
-    </div>;
   }
 }
 
