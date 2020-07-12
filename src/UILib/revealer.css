@@ -16,4 +16,5 @@
 
 .revealer > .content {
   flex-direction: column;
+  padding-left: 20px;
 }
