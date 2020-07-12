@@ -6,7 +6,7 @@ export default class StringTaskView extends React.Component<{task: Task<string>}
     const {task} = this.props;
 
     return (
-      <div className="string-task-details">
+      <>
         <span>
           {task.content}
         </span>
@@ -19,7 +19,7 @@ export default class StringTaskView extends React.Component<{task: Task<string>}
         <span className="not-important">
           Closed at: {!task.isOpen ? task.dateClosed?.toDateString() : "Not yet"}
         </span>
-      </div>
+      </>
     );
   }
 }
