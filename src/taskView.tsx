@@ -2,11 +2,19 @@ import React from "react";
 import {GroupTask, Task} from "./task";
 import Revealer from "./UILib/revealer";
 import {observer} from "mobx-react";
+import Button from "./UILib/button";
 
 @observer
 class GroupTaskView extends React.Component<{task: GroupTask}> {
   render() {
-    return this.props.task.content.map(it => <AnyTaskView task={it} key={it.dateCreated.getTime()}/>);
+    const {content} = this.props.task;
+
+    return <div>
+      <Button onClick={() => content.push(new Task("A task", ""))}>New task</Button>
+      <Button onClick={() => content.push(new GroupTask("A group", []))}>New group</Button>
+
+      {content.map(it => <AnyTaskView task={it} key={it.dateCreated.getTime()}/>)}
+    </div>
   }
 }
 
