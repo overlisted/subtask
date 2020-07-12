@@ -1,8 +1,8 @@
 import React from "react";
-import "./UILib/defaults.css"
+import "./UILib/defaults.css";
 import "./app.css";
 import {observer} from "mobx-react";
-import {GroupTask, Task} from "./task";
+import {GroupTask} from "./task";
 import {observable} from "mobx";
 import AnyTaskView from "./taskView";
 
