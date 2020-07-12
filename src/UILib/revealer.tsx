@@ -4,7 +4,7 @@ import "./revealer.css"
 import {observer} from "mobx-react";
 
 @observer
-export class Revealer extends React.Component<{title: React.ReactNode}, {isOpen: boolean}> {
+export default class Revealer extends React.Component<{title: React.ReactNode}, {isOpen: boolean}> {
   state = {
     isOpen: false
   }
