@@ -1,9 +1,8 @@
-import {SwitcherOptionData} from "./UILib/switcher";
 import {computed, observable} from "mobx";
 
 type TaskDate = Date | null;
 
-export class Task<C> implements SwitcherOptionData {
+export class Task<C> {
   @observable name: string;
   @observable content: C;
   dateCreated: Date = new Date();
@@ -28,10 +27,6 @@ export class Task<C> implements SwitcherOptionData {
 
   @computed get completionTook() {
     return this.dateClosed ? this.dateClosed.getTime() - this.dateCreated.getTime() : null;
-  }
-
-  get key() {
-    return this.dateCreated.getTime();
   }
 
   set isOpen(is: boolean) {
