@@ -2,9 +2,9 @@ import React from "react";
 import "./UILib/defaults.css"
 import "./app.css";
 import {observer} from "mobx-react";
-import {GroupTask} from "./task";
+import {GroupTask, Task} from "./task";
 import {observable} from "mobx";
-import Revealer from "./UILib/revealer";
+import AnyTaskView from "./taskView";
 
 @observer
 class App extends React.Component {
@@ -13,17 +13,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <Revealer title="test">
-          <Revealer title="test">
-            <span>1</span>
-          </Revealer>
-          <Revealer title="test">
-            <span>2</span>
-          </Revealer>
-          <Revealer title="test">
-            <span>3</span>
-          </Revealer>
-        </Revealer>
+        <AnyTaskView task={this.mainGroup}/>
       </>
     );
   }
