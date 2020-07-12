@@ -1,9 +1,9 @@
 import React from "react";
 import {GroupTask, Task} from "./task";
-import Revealer from "./UILib/revealer";
 import {observer} from "mobx-react";
 import Button from "./UILib/button";
 import StringTaskView from "./stringTaskView";
+import {Revealer} from "./UILib/revealer";
 
 @observer
 class GroupTaskView extends React.Component<{task: GroupTask}> {
@@ -26,7 +26,7 @@ export default class AnyTaskView extends React.Component<{task: Task<any>}> {
   render() {
     const {task} = this.props;
 
-    if(task instanceof GroupTask) return <Revealer title={task.name}><GroupTaskView task={task}/></Revealer>;
+    if(task instanceof GroupTask) return <Revealer title={task.name}><GroupTaskView task={task}/></Revealer>
     if(typeof task.content === "string") return <Revealer title={task.name}><StringTaskView task={task}/></Revealer>;
   }
 }

@@ -1,15 +1,16 @@
 import React from "react";
 import classNames from "classnames";
 import "./revealer.css"
+import {observer} from "mobx-react";
 
-export default class Revealer extends React.Component<{title: string}, {isOpen: boolean}> {
+@observer
+export class Revealer extends React.Component<{title: React.ReactNode}, {isOpen: boolean}> {
   state = {
     isOpen: false
   }
 
   render() {
     const {isOpen} = this.state;
-
     return (
       <div className="revealer">
         <span
