@@ -11,8 +11,10 @@ class GroupTaskView extends React.Component<{task: GroupTask}> {
     const {content} = this.props.task;
 
     return <>
-      <Button onClick={() => content.push(new Task("A task", ""))}>New task</Button>
-      <Button onClick={() => content.push(new GroupTask("A group", []))}>New group</Button>
+      <div className="group-actions">
+        <Button onClick={() => content.push(new Task("A task", ""))}>New task</Button>
+        <Button onClick={() => content.push(new GroupTask("A group", []))}>New group</Button>
+      </div>
 
       {content.map(it => <AnyTaskView task={it} key={it.dateCreated.getTime()}/>)}
     </>
