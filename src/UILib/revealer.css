@@ -1,0 +1,14 @@
+.revealer {
+  border-radius: 5px 5px 0 0;
+  background-color: #fff;
+}
+
+.revealer > .header {
+  background-color: #595959;
+  color: #f0f0f0;
+  padding: 5px;
+}
+
+.revealer > .header.active {
+  background-color: #2f9599;
+}

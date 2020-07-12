@@ -14,9 +14,15 @@ class App extends React.Component {
     return (
       <>
         <Revealer title="test">
-          <span>1</span>
-          <span>2</span>
-          <span>3</span>
+          <Revealer title="test">
+            <span>1</span>
+          </Revealer>
+          <Revealer title="test">
+            <span>2</span>
+          </Revealer>
+          <Revealer title="test">
+            <span>3</span>
+          </Revealer>
         </Revealer>
       </>
     );

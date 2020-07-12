@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import "./revealer.css"
 
 export default class Revealer extends React.Component<{title: string}, {isOpen: boolean}> {
   state = {

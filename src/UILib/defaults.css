@@ -43,11 +43,6 @@ span {
   display: none;
 }
 
-.active {
-  background-color: #2f9599;
-  color: #f0f0f0;
-}
-
 .no-display {
   display: none;
 }
