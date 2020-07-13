@@ -28,7 +28,7 @@ export default class AnyTaskView extends React.Component<{task: Task<any>}> {
   render() {
     const {task} = this.props;
 
-    if(task instanceof GroupTask) {
+    if(Array.isArray(task.content)) {
       return <Revealer title={<TaskRevealerTitle task={task}/>}><GroupTaskView task={task}/></Revealer>
     }
 
