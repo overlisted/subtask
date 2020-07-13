@@ -4,6 +4,8 @@ import {observer} from "mobx-react";
 import Button from "./UILib/button";
 import StringTaskView from "./stringTaskView";
 import Revealer from "./UILib/revealer";
+import {Field} from "./UILib/editable";
+import {observable} from "mobx";
 
 @observer
 class GroupTaskView extends React.Component<{task: GroupTask}> {
@@ -38,16 +40,28 @@ export default class AnyTaskView extends React.Component<{task: Task<any>}> {
 
 @observer
 class TaskRevealerTitle extends React.Component<{task: Task<any>}> {
+  @observable isRenaming = false;
+
   render() {
     const {task} = this.props;
 
     return <div className="task-revealer-title">
-      <span>{task.name}</span>
+      {
+        this.isRenaming
+          ? <Field value={task.name} setValue={name => task.name = name}/>
+          : <span>{task.name}</span>
+      }
       <span
         onClick={() => task.isOpen = !task.isOpen}
         className="clickable not-important"
       >
         {task.isOpen ? "Close" : "Reopen"}
+      </span>
+      <span
+        onClick={() => this.isRenaming = !this.isRenaming}
+        className="clickable not-important"
+      >
+        {this.isRenaming ? "Escape" : "Rename"}
       </span>
     </div>;
   }
