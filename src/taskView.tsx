@@ -18,7 +18,7 @@ class GroupTaskView extends React.Component<{task: GroupTask}> {
         <Button onClick={() => content.push(new GroupTask("A group", []))}>New group</Button>
       </div>
 
-      {content.map(it => <AnyTaskView task={it} key={it.dateCreated.getTime()}/>)}
+      {content.map(it => <AnyTaskView task={it} key={it.dateCreated}/>)}
     </>
   }
 }

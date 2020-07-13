@@ -27,13 +27,13 @@ export default class StringTaskView extends React.Component<{task: Task<string>}
           </span>
         </div>
         <span className="not-important">
-          Created at: {task.dateCreated.toDateString()}
+          Created at: {new Date(task.dateCreated).toDateString()}
         </span>
         <span className="not-important">
-          Expiring at: {task.hasExpired ? task.expireDate?.toDateString() : "Never"}
+          Expiring at: {task.hasExpired ? new Date(task.dateCreated).toDateString() : "Never"}
         </span>
         <span className="not-important">
-          Closed at: {!task.isOpen ? task.dateClosed?.toDateString() : "Not yet"}
+          Closed at: {!task.isOpen ? new Date(task.dateCreated).toDateString() : "Not yet"}
         </span>
       </>
     );

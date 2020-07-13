@@ -1,15 +1,13 @@
 import {computed, observable} from "mobx";
 
-type TaskDate = Date | null;
-
 export class Task<C> {
   @observable name: string;
   @observable content: C;
-  dateCreated: Date = new Date();
-  expireDate: TaskDate;
-  @observable dateClosed: TaskDate = null;
+  @observable dateCreated: number = new Date().getTime();
+  @observable expireDate: number;
+  @observable dateClosed: number = 0;
 
-  constructor(name: string, content: C, expireDate: TaskDate = null) {
+  constructor(name: string, content: C, expireDate: number = 0) {
     this.name = name;
     this.content = content;
     this.expireDate = expireDate;
@@ -26,16 +24,16 @@ export class Task<C> {
   }
 
   @computed get completionTook() {
-    return this.dateClosed ? this.dateClosed.getTime() - this.dateCreated.getTime() : null;
+    return this.dateClosed ? this.dateClosed - this.dateCreated : null;
   }
 
   set isOpen(is: boolean) {
-    this.dateClosed = is ? null : new Date();
+    this.dateClosed = is ? 0 : new Date().getTime();
   }
 }
 
 export class GroupTask extends Task<Task<any>[]> {
-  constructor(name: string, content: Task<Task<any>>[] = [], expireDate: TaskDate = null) {
+  constructor(name: string, content: Task<Task<any>>[] = [], expireDate: number = 0) {
     super(name, content, expireDate);
   }
 }
