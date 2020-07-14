@@ -1,4 +1,4 @@
-import React from "react";
+import React, {MouseEventHandler} from "react";
 import {GroupTask, Task} from "./task";
 import {observer} from "mobx-react";
 import Button from "./UILib/button";
@@ -38,6 +38,17 @@ export default class AnyTaskView extends React.Component<{task: Task<any>}> {
   }
 }
 
+class TitleButton extends React.Component<{onClick: MouseEventHandler<HTMLElement>}> {
+  render() {
+    return <span
+      className="clickable not-important"
+      onClick={this.props.onClick}
+    >
+      {this.props.children}
+    </span>
+  }
+}
+
 @observer
 class TaskRevealerTitle extends React.Component<{task: Task<any>}> {
   @observable isRenaming = false;
@@ -51,18 +62,12 @@ class TaskRevealerTitle extends React.Component<{task: Task<any>}> {
           ? <Field value={task.name} setValue={name => task.name = name}/>
           : <span>{task.name}</span>
       }
-      <span
-        onClick={() => task.isOpen = !task.isOpen}
-        className="clickable not-important"
-      >
+      <TitleButton onClick={() => task.isOpen = !task.isOpen}>
         {task.isOpen ? "Close" : "Reopen"}
-      </span>
-      <span
-        onClick={() => this.isRenaming = !this.isRenaming}
-        className="clickable not-important"
-      >
+      </TitleButton>
+      <TitleButton onClick={() => this.isRenaming = !this.isRenaming}>
         {this.isRenaming ? "Escape" : "Rename"}
-      </span>
+      </TitleButton>
     </div>;
   }
 }
