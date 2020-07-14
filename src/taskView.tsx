@@ -96,14 +96,19 @@ class TaskRevealerTitle extends React.Component<{task: Task<any>}> {
     return <>
       {
         this.isRenaming
-          ? <Field value={task.name} setValue={name => task.name = name}/>
+          ? <Field
+            onHitEscape={() => this.isRenaming = false}
+            onHitEnter={() => this.isRenaming = false}
+            value={task.name}
+            setValue={name => task.name = name}
+          />
           : <span className={task.isOpen ? "" : "crossed-out"}>{task.name}</span>
       }
       <TitleButton onClick={() => task.isOpen = !task.isOpen}>
         {task.isOpen ? "Close" : "Reopen"}
       </TitleButton>
       <TitleButton onClick={() => this.isRenaming = !this.isRenaming}>
-        {this.isRenaming ? "Escape" : "Rename"}
+        Rename
       </TitleButton>
       <CopyToClipboard text={JSON.stringify(task, null, 2)}>
         <TitleButton>JSON to clipboard</TitleButton>

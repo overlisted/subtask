@@ -16,14 +16,18 @@ export default class StringTaskView extends React.Component<{task: StringTask}> 
         <div>
           {
             this.isEditingContent
-              ? <Field value={task.content} setValue={name => task.content = name}/>
+              ? <Field
+                onHitEscape={() => this.isEditingContent = false}
+                value={task.content}
+                setValue={name => task.content = name}
+              />
               : <span>{task.content}</span>
           }
           <span
             onClick={() => this.isEditingContent = !this.isEditingContent}
             className="clickable not-important"
           >
-            {this.isEditingContent ? "Escape" : "Edit"}
+            Edit
           </span>
         </div>
         <span className="not-important">
