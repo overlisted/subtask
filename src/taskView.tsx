@@ -56,7 +56,7 @@ class TaskRevealerTitle extends React.Component<{task: Task<any>}> {
   render() {
     const {task} = this.props;
 
-    return <div className="task-revealer-title">
+    return <>
       {
         this.isRenaming
           ? <Field value={task.name} setValue={name => task.name = name}/>
@@ -68,6 +68,6 @@ class TaskRevealerTitle extends React.Component<{task: Task<any>}> {
       <TitleButton onClick={() => this.isRenaming = !this.isRenaming}>
         {this.isRenaming ? "Escape" : "Rename"}
       </TitleButton>
-    </div>;
+    </>;
   }
 }

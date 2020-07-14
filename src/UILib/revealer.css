@@ -10,6 +10,10 @@
   padding: 5px;
 }
 
+.revealer > .header > * {
+  margin-right: 10px;
+}
+
 .revealer > .header.active {
   background-color: #2f9599;
 }
