@@ -19,12 +19,16 @@ span {
 
 .button {
   padding: 5px;
-  border-radius: 5px;
-  cursor: pointer;
+}
+
+.button:active {
+  background-color: #2f9599;
+  color: #f0f0f0;
 }
 
 .clickable {
   cursor: pointer;
+  user-select: none;
 }
 
 .crossed-out {

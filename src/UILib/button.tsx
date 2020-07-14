@@ -10,7 +10,7 @@ export default class Button extends React.Component<ButtonProps> {
   render() {
     return (
       <span
-        className="button"
+        className="button clickable"
         onClick={this.props.onClick}
       >
         {this.props.children}
