@@ -4,13 +4,12 @@ export class Task<C> {
   @observable name: string;
   @observable content: C;
   @observable dateCreated: number = new Date().getTime();
-  @observable expireDate: number;
+  @observable expireDate: number = 0;
   @observable dateClosed: number = 0;
 
-  constructor(name: string, content: C, expireDate: number = 0) {
+  constructor(name: string, content: C) {
     this.name = name;
     this.content = content;
-    this.expireDate = expireDate;
 
     this.isOpen = true;
   }
@@ -44,7 +43,7 @@ export class GroupTask extends Task<Task<any>[]> {
     this.content.forEach(it => it.dateClosed = value);
   }
 
-  constructor(name: string, content: Task<Task<any>>[] = [], expireDate: number = 0) {
-    super(name, content, expireDate);
+  constructor(name: string, content: Task<Task<any>>[] = []) {
+    super(name, content);
   }
 }
