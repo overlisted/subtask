@@ -1,6 +1,9 @@
 import {computed, observable} from "mobx";
+import {format} from "mobx-sync";
 
 export abstract class Task<C> {
+  abstract readonly _TYPE: string;
+
   @observable name: string;
   @observable content: C;
   @observable dateCreated: number = new Date().getTime();
@@ -32,6 +35,8 @@ export abstract class Task<C> {
 }
 
 export class StringTask extends Task<string> {
+  _TYPE = "StringTask";
+
   constructor(name: string, content: string = "") {
     super(name, content);
   }
@@ -61,6 +66,11 @@ function deserializeTask(task: Task<unknown>): Task<unknown> {
 }
 
 export class GroupTask extends Task<Task<any>[]> {
+  _TYPE = "GroupTask";
+
+  @format<Task<unknown>[]>(tasks => tasks.map(deserializeTask))
+  @observable content: Task<any>[];
+
   @computed get dateClosed() {
     let max = 0;
     this.content.forEach(it => max = Math.max(max, it.dateClosed));
@@ -74,5 +84,6 @@ export class GroupTask extends Task<Task<any>[]> {
 
   constructor(name: string, content: Task<Task<any>>[] = []) {
     super(name, content);
+    this.content = content;
   }
 }
