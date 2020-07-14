@@ -37,6 +37,29 @@ export class StringTask extends Task<string> {
   }
 }
 
+function deserializeTask(task: Task<unknown>): Task<unknown> {
+  let result: Task<unknown>;
+
+  switch(task._TYPE) {
+    case "StringTask": {
+      result = new StringTask(task.name);
+      break;
+    }
+    case "GroupTask": {
+      result = new GroupTask(task.name);
+      break;
+    }
+    default: throw new TypeError(`Unknown task type ${task._TYPE}`);
+  }
+
+  result.content = task.content;
+  result.dateCreated = task.dateCreated;
+  result.expireDate = task.expireDate;
+  result.dateClosed = task.dateClosed;
+
+  return result;
+}
+
 export class GroupTask extends Task<Task<any>[]> {
   @computed get dateClosed() {
     let max = 0;
