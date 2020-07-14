@@ -6,6 +6,7 @@ import StringTaskView from "./stringTaskView";
 import Revealer from "./UILib/revealer";
 import {Field} from "./UILib/editable";
 import {observable} from "mobx";
+import CopyToClipboard from 'react-copy-to-clipboard';
 
 @observer
 class GroupTaskView extends React.Component<{task: GroupTask}> {
@@ -38,7 +39,7 @@ export default class AnyTaskView extends React.Component<{task: Task<any>}> {
   }
 }
 
-class TitleButton extends React.Component<{onClick: MouseEventHandler<HTMLElement>}> {
+class TitleButton extends React.Component<{onClick?: MouseEventHandler<HTMLElement>}> {
   render() {
     return <span
       className="clickable not-important"
@@ -68,6 +69,9 @@ class TaskRevealerTitle extends React.Component<{task: Task<any>}> {
       <TitleButton onClick={() => this.isRenaming = !this.isRenaming}>
         {this.isRenaming ? "Escape" : "Rename"}
       </TitleButton>
+      <CopyToClipboard text={JSON.stringify(task, null, 2)}>
+        <TitleButton>JSON to clipboard</TitleButton>
+      </CopyToClipboard>
     </>;
   }
 }
