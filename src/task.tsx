@@ -50,6 +50,9 @@ function deserializeTask(task: Task<unknown>): Task<unknown> {
 
   result = new (prototype)(task.name);
   Object.assign(result, task);
+  if(prototype === GroupTask) { // @ts-ignore
+    result.content = result.content.map(it => deserializeTask(it));
+  }
 
   return result;
 }
