@@ -1,6 +1,6 @@
 import {computed, observable} from "mobx";
 
-export class Task<C> {
+export abstract class Task<C> {
   @observable name: string;
   @observable content: C;
   @observable dateCreated: number = new Date().getTime();
