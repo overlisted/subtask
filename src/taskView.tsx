@@ -30,9 +30,14 @@ class ButtonImportJSON extends React.Component<{group: GroupTask}> {
   render() {
     let {clicked, json} = this.state;
 
-    if(clicked) return <div onKeyPress={e => e.key === "Enter" && this.finish()}>
-      <Field value={json} setValue={value => this.setState({json: value})}/>
-    </div>
+    if(clicked) {
+      return <Field
+        onHitEnter={this.finish}
+        onHitEscape={() => this.setState({clicked: false})}
+        value={json}
+        setValue={value => this.setState({json: value})}
+      />
+    }
 
     return <Button onClick={() => this.setState({clicked: true})}>Import JSON</Button>
   }
