@@ -44,15 +44,12 @@ export class StringTask extends Task<string> {
 
 function deserializeTask(task: Task<unknown>): Task<unknown> {
   let result: Task<unknown>
+
   const prototype = taskTypeMap.get(task._TYPE);
-
   if(!prototype) throw new TypeError(`Unknown task type ${task._TYPE}`);
-  result = new (prototype)(task.name);
 
-  result.content = task.content;
-  result.dateCreated = task.dateCreated;
-  result.expireDate = task.expireDate;
-  result.dateClosed = task.dateClosed;
+  result = new (prototype)(task.name);
+  Object.assign(result, task);
 
   return result;
 }
