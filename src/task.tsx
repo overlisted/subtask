@@ -42,7 +42,7 @@ export class StringTask extends Task<string> {
   }
 }
 
-function deserializeTask(task: Task<unknown>): Task<unknown> {
+export function deserializeTask(task: Task<unknown>): Task<unknown> {
   let result: Task<unknown>
 
   const prototype = taskTypeMap.get(task._TYPE);
