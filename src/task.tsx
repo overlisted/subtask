@@ -43,19 +43,11 @@ export class StringTask extends Task<string> {
 }
 
 function deserializeTask(task: Task<unknown>): Task<unknown> {
-  let result: Task<unknown>;
+  let result: Task<unknown>
+  const prototype = taskTypeMap.get(task._TYPE);
 
-  switch(task._TYPE) {
-    case "StringTask": {
-      result = new StringTask(task.name);
-      break;
-    }
-    case "GroupTask": {
-      result = new GroupTask(task.name);
-      break;
-    }
-    default: throw new TypeError(`Unknown task type ${task._TYPE}`);
-  }
+  if(!prototype) throw new TypeError(`Unknown task type ${task._TYPE}`);
+  result = new (prototype)(task.name);
 
   result.content = task.content;
   result.dateCreated = task.dateCreated;
@@ -87,3 +79,8 @@ export class GroupTask extends Task<Task<any>[]> {
     this.content = content;
   }
 }
+
+const taskTypeMap = new Map<string, new(name: string) => Task<any>>([
+  ["StringTask", StringTask],
+  ["GroupTask", GroupTask]
+]);
