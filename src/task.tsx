@@ -64,9 +64,14 @@ export class GroupTask extends Task<Task<any>[]> {
   @observable content: Task<any>[];
 
   @computed get dateClosed() {
+    let closedChildren = 0;
     let max = 0;
-    this.content.forEach(it => max = Math.max(max, it.dateClosed));
+    this.content.forEach(it => {
+      if(!it.isOpen) closedChildren++;
+      max = Math.max(max, it.dateClosed)
+    });
 
+    if(closedChildren < this.content.length) return 0;
     return max;
   }
 
