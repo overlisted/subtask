@@ -33,6 +33,17 @@ export class Task<C> {
 }
 
 export class GroupTask extends Task<Task<any>[]> {
+  @computed get dateClosed() {
+    let max = 0;
+    this.content.forEach(it => max = Math.max(max, it.dateClosed));
+
+    return max;
+  }
+
+  set dateClosed(value) {
+    this.content.forEach(it => it.dateClosed = value);
+  }
+
   constructor(name: string, content: Task<Task<any>>[] = [], expireDate: number = 0) {
     super(name, content, expireDate);
   }
