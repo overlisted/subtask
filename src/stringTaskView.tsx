@@ -1,11 +1,11 @@
 import React from "react";
-import {Task} from "./task";
+import {StringTask} from "./task";
 import {observer} from "mobx-react";
 import {observable} from "mobx";
 import {Field} from "./UILib/editable";
 
 @observer
-export default class StringTaskView extends React.Component<{task: Task<string>}> {
+export default class StringTaskView extends React.Component<{task: StringTask}> {
   @observable isEditingContent = false;
 
   render() {

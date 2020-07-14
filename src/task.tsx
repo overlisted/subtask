@@ -31,6 +31,12 @@ export class Task<C> {
   }
 }
 
+export class StringTask extends Task<string> {
+  constructor(name: string, content: string = "") {
+    super(name, content);
+  }
+}
+
 export class GroupTask extends Task<Task<any>[]> {
   @computed get dateClosed() {
     let max = 0;

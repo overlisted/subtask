@@ -15,7 +15,7 @@ class App extends React.Component {
   constructor(props: {}) {
     super(props);
 
-    this.mainGroup = new GroupTask("\0Local tasks", [], 0);
+    this.mainGroup = new GroupTask("\0Local tasks", []);
     this.trunk = new SyncTrunk(this.mainGroup, {storage: window.localStorage});
 
     this.trunk.init();

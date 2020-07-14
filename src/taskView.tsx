@@ -1,5 +1,5 @@
 import React, {MouseEventHandler} from "react";
-import {GroupTask, Task} from "./task";
+import {GroupTask, StringTask, Task} from "./task";
 import {observer} from "mobx-react";
 import Button from "./UILib/button";
 import StringTaskView from "./stringTaskView";
@@ -14,8 +14,8 @@ class GroupTaskView extends React.Component<{task: GroupTask}> {
 
     return <>
       <div className="group-actions">
-        <Button onClick={() => content.push(new Task("A task", ""))}>New task</Button>
-        <Button onClick={() => content.push(new GroupTask("A group", []))}>New group</Button>
+        <Button onClick={() => content.push(new StringTask("A task"))}>New task</Button>
+        <Button onClick={() => content.push(new GroupTask("A group"))}>New group</Button>
       </div>
 
       {content.map(it => <AnyTaskView task={it} key={it.dateCreated}/>)}
