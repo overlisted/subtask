@@ -1,5 +1,5 @@
 import React, {MouseEventHandler} from "react";
-import {GroupTask, StringTask, Task} from "./task";
+import {deserializeTask, GroupTask, StringTask, Task} from "./task";
 import {observer} from "mobx-react";
 import Button from "./UILib/button";
 import StringTaskView from "./stringTaskView";
@@ -7,6 +7,36 @@ import Revealer from "./UILib/revealer";
 import {Field} from "./UILib/editable";
 import {observable} from "mobx";
 import CopyToClipboard from 'react-copy-to-clipboard';
+
+class ButtonImportJSON extends React.Component<{group: GroupTask}> {
+  state = {
+    clicked: false,
+    json: ""
+  }
+
+  finish = () => {
+    try {
+      const result = deserializeTask(JSON.parse(this.state.json));
+      result.dateCreated = new Date().getTime();
+
+      this.props.group.content.push(result);
+
+      this.setState({clicked: false});
+    } catch(e) {
+      this.setState({json: "Invalid JSON!"});
+    }
+  }
+
+  render() {
+    let {clicked, json} = this.state;
+
+    if(clicked) return <div onKeyPress={e => e.key === "Enter" && this.finish()}>
+      <Field value={json} setValue={value => this.setState({json: value})}/>
+    </div>
+
+    return <Button onClick={() => this.setState({clicked: true})}>Import JSON</Button>
+  }
+}
 
 @observer
 class GroupTaskView extends React.Component<{task: GroupTask}> {
@@ -17,6 +47,7 @@ class GroupTaskView extends React.Component<{task: GroupTask}> {
       <div className="group-actions">
         <Button onClick={() => content.push(new StringTask("A task"))}>New task</Button>
         <Button onClick={() => content.push(new GroupTask("A group"))}>New group</Button>
+        <ButtonImportJSON group={this.props.task}/>
       </div>
 
       {content.map(it => <AnyTaskView task={it} key={it.dateCreated}/>)}
