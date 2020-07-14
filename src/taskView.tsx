@@ -60,7 +60,7 @@ class TaskRevealerTitle extends React.Component<{task: Task<any>}> {
       {
         this.isRenaming
           ? <Field value={task.name} setValue={name => task.name = name}/>
-          : <span>{task.name}</span>
+          : <span className={task.isOpen ? "" : "crossed-out"}>{task.name}</span>
       }
       <TitleButton onClick={() => task.isOpen = !task.isOpen}>
         {task.isOpen ? "Close" : "Reopen"}
