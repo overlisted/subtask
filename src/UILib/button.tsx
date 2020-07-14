@@ -1,5 +1,4 @@
 import React from "react";
-import classNames from "classnames";
 import {observer} from "mobx-react";
 
 interface ButtonProps {
@@ -7,15 +6,11 @@ interface ButtonProps {
 }
 
 @observer
-export default class Button extends React.Component<ButtonProps, {isActive: boolean}> {
-  state = {
-    isActive: false
-  }
-
+export default class Button extends React.Component<ButtonProps> {
   render() {
     return (
       <span
-        className={classNames({"button": true, "active": this.state.isActive})}
+        className="button"
         onClick={this.props.onClick}
       >
         {this.props.children}
