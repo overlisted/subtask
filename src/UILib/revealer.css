@@ -10,6 +10,10 @@
   padding: 5px;
 }
 
+.revealer > .header:not(:hover) .not-important {
+  display: none;
+}
+
 .revealer > .header > * {
   margin-right: 10px;
 }
